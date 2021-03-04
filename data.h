@@ -8,15 +8,15 @@ using namespace std;
  
 
 
-/* ***************************************  PAIRS  ******************************** */
-class PAIRS{
+/* ********************************  PAIRS  ******************************** */
+class PAIR{
 public:
-    vector<double>  input;
-    vector<double>  output;
+    vector<double>  x;
+    vector<double>  y;
 };
 
 
-/* ***************************************  DATA  ******************************** */
+/* *********************************  DATA  ******************************** */
  
 
 class DATA{
@@ -26,7 +26,7 @@ public:
     void printDATA();
     
 private:
-    vector<PAIRS> data;
+    vector<PAIR> data;
     unsigned x_size;
     unsigned y_size;
 };
@@ -43,12 +43,12 @@ DATA::DATA(int size_1, int size_2){
     
     // EXTRACT file
     ifstream myFile;
-    myFile.open("/Users/tal/Desktop/CODE/CODE_2/example.csv");
+    myFile.open("/Users/tal/Desktop/CODE/ANN/ANN/data.csv");
     
     // file into data
     int total = x_size + y_size;
     int index = 0;
-    PAIRS pair;
+    PAIR pair;
     
     while (myFile.good())
     {
@@ -59,14 +59,14 @@ DATA::DATA(int size_1, int size_2){
         
         // STEP - construct pair
         int a = index % total;
-        a < x_size ? pair.input.push_back(val) : pair.output.push_back(val);
+        a < x_size ? pair.x.push_back(val) : pair.y.push_back(val);
         
         // STEP - pair COMPLETED
-        if ( pair.input.size() + pair.output.size() == total )
+        if ( pair.x.size() + pair.y.size() == total )
         {
             data.push_back(pair);  // assign pair
-            pair.input.clear();    // erase pair
-            pair.output.clear();
+            pair.x.clear();    // erase pair
+            pair.y.clear();
         }
         index++;
     }
@@ -85,13 +85,13 @@ void DATA::printDATA()
         // left coordinate
         for (int j=0; j<x_size ; j++)
         {
-            cout << data[i].input[j] << " ";
+            cout << data[i].x[j] << " ";
         }
         
         // right coordinate
         for (int j=0; j<y_size ; j++)
         {
-            cout << data[i].output[j] << " ";
+            cout << data[i].y[j] << " ";
         }
         
         cout<<endl;

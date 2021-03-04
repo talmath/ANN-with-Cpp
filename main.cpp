@@ -1,13 +1,8 @@
 
-
-
-// little change ... 
-
-
+/* PACKAGEs*/
 #include <iostream>
 #include <vector>
 #include <fstream>
-
 #include "neuron.h"
 #include "network.h"
 #include "data.h"
@@ -19,27 +14,9 @@
 
 int main() {
     
-    
-    int x_size = 2;
-    int y_size = 1;
-    
-    
     // DATA
-    DATA data(x_size,y_size);    // construct
+    DATA data(2,1);              // construct
     data.printDATA();            // print
-    
-    
-    /*
-     the next step is to use DATA in order to feed our NET.
-     what do you mean by feeding ? well, the answer is simple but
-     the application might be rather technical as we have to learn
-     how to differentiate a complex function. 
-     
-     
-     
-     */
-    
-    
     
     
     // TOPOLOGY
